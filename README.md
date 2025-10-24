@@ -1,166 +1,189 @@
-🚗 Road Accident Analysis Dashboard (Power BI)
+🚗 Road Accident Analysis Dashboard
 
-📊 Project Overview
+A dynamic and interactive Power BI dashboard designed to provide deep insights into road accident patterns across the years 2021 and 2022, focusing on accident severity, vehicle involvement, environmental factors, and geographical distribution.
 
-This Power BI project analyzes road accident data for the years 2021 and 2022, providing actionable insights into accident patterns, severity, vehicle involvement, and environmental conditions.
-The dashboard enables stakeholders to identify key metrics, trends, and high-risk areas to support road safety decisions and policy making.
+📝 Short Description / Purpose
 
-🧩 Project Objectives
+The Road Accident Analysis Dashboard enables users to analyze and compare road safety data between 2021 and 2022. It highlights key performance indicators (KPIs) such as total casualties, accident severity, vehicle type breakdowns, and environmental conditions.
+This tool is intended for traffic authorities, urban planners, policymakers, and data analysts aiming to identify high-risk areas, monitor year-over-year changes, and develop strategies for improving road safety.
 
-The client required an interactive Road Accident Dashboard to visualize:
+⚙️ Tech Stack
 
-Primary KPIs
+The dashboard was built using the following tools and technologies:
 
-Total Casualties and Total Accidents (Current Year)
+📊 Power BI Desktop – Main data visualization platform used to design and publish the dashboard.
 
-Year-over-Year (YOY) growth for both
+📂 Power Query Editor – Used for data cleaning, transformation, and column-level editing.
 
-Accident Severity Breakdown
+🧠 DAX (Data Analysis Expressions) – Applied for calculated measures, YOY analysis, and time intelligence.
 
-Fatal, Serious, and Slight Casualties (with YOY comparison)
+🧩 Data Modeling – Established relationships between accident and calendar tables for dynamic time-based reporting.
 
-Vehicle Type Analysis
+🖼️ PowerPoint – Used to design a customized dashboard background layout.
 
-Total Casualties by type (Car, Bike, Bus, Van, etc.)
+📁 File Formats – .pbix (dashboard), .xlsx (dataset), .pptx (background), .jpg (preview image).
 
-Monthly Trends
+📂 Data Source
 
-Comparison of Current Year (CY) vs Previous Year (PY) casualties
+Source: Provided client dataset titled Road Accident Data.xlsx
 
-Road Type Analysis
+The dataset contains detailed information on traffic accidents across the United Kingdom for the years 2021 and 2022, including:
 
-Casualties across Single Carriageway, Dual Carriageway, Roundabout, etc.
+Date and time of accident
 
-Geographical Insights
+Number of casualties and severity levels
 
-Casualties and Accidents by Location (Map visualization)
+Vehicle type and road type
 
-Environmental Factors
+Area classification (Urban/Rural)
 
-Distribution by Urban/Rural areas and Day/Night light conditions
+Light and weather conditions
 
-📂 Dataset Information
+Geographic location coordinates
 
-File Name: Road Accident Data.xlsx
+Each record represents an individual road accident event with associated attributes used for aggregation and visualization.
 
-Data Source: Provided by client (2021–2022 accident records)
+🌟 Features / Highlights
+• Business Problem
 
-Key Columns:
+Road traffic accidents contribute significantly to annual fatalities and injuries. Authorities lacked a unified system to visualize accident trends, assess the impact of road conditions, and identify areas requiring intervention.
 
-Accident Date
+Key questions addressed:
 
-Number of Casualties
+What is the trend in total casualties and accidents compared to the previous year?
 
-Accident Severity
+Which vehicle types and road categories are most involved in accidents?
 
-Vehicle Type
+How do environmental conditions (day/night, rural/urban) influence casualty rates?
 
-Road Type
+Which regions report the highest number of casualties?
 
-Urban/Rural
+• Goal of the Dashboard
 
-Light Conditions
+To deliver an interactive and data-driven analytical tool that:
 
-Location Details
+Provides clear visibility into yearly accident trends and casualty severity.
 
-🧹 Data Preparation
-1. Data Cleaning
+Helps traffic management departments identify risk-prone vehicle and road types.
 
-Performed using Power Query Editor:
+Enables geospatial accident mapping for targeted safety improvements.
 
-Removed duplicates
+Supports policy-level decision making using comparative analytics between years.
 
-Standardized column names
+• Walkthrough of Key Visuals
 
-Fixed data type mismatches
+1. KPI Summary Cards (Top Row)
+Displays primary and secondary KPIs including:
 
-Handled missing values
+Total Casualties: 195.7K (↓11.9%)
 
-2. Data Processing
+Total Accidents: 144.4K (↓11.7%)
 
-Created a Calendar Table for time-based calculations:
+Fatal Casualties: 2.9K (↓33.3%)
 
-Calendar = CALENDAR(MIN(Data[Accident Date]), MAX(Data[Accident Date]))
-Year = YEAR('Calendar'[Date])
-Month = FORMAT('Calendar'[Date], "mmm")
+Serious Casualties: 27K (↓16.2%)
 
-🔗 Data Modelling
+Slight Casualties: 165.8K (↓10.6%)
 
-Established relationships between tables:
+2. Casualties by Vehicle Type (Left Panel)
+A vertical bar chart highlighting casualties by type:
 
-Accident Table → Calendar Table (Many-to-One relationship)
+Cars: 155,804
 
-This enabled the use of time intelligence functions for YTD and YOY calculations.
+Bikes: 15,610
 
-📈 DAX Measures (Sample)
+Vans: 15,905
+
+Buses: 6,573
+
+Agricultural & Others: 1,845 combined
+
+This visual identifies vehicle categories most prone to accidents.
+
+3. Monthly Trend Comparison (Center Panel)
+Line graph comparing Current Year (2022) and Previous Year (2021) casualties month-by-month.
+Provides seasonal trend analysis to identify high-incident periods (e.g., summer peaks).
+
+4. Casualties by Road Type (Bottom Left)
+Horizontal bar chart displaying total casualties per road category:
+
+Single Carriageway: 145K
+
+Dual Carriageway: 32K
+
+Roundabout: 13K
+
+Slip/One-way Roads: ~3K each
+
+Helps pinpoint which infrastructure types pose greater risk.
+
+5. Area & Light Condition Analysis (Bottom Center)
+Two donut charts showing:
+
+Urban vs Rural Distribution: Urban (61.95%), Rural (38.05%)
+
+Light Condition: Day (73.84%), Night (26.16%)
+
+These visuals show the influence of environment and visibility on accidents.
+
+6. Casualties by Location (Right Panel)
+An interactive map visualization of accident density across the United Kingdom.
+Hotspots like London, Birmingham, and Manchester indicate regions with higher incident counts.
+
+• Business Impact & Insights
+
+📉 Reduction in Overall Casualties: A notable decline of 11.9% YoY demonstrates improving safety initiatives.
+
+🚗 Car-related accidents dominate total casualties, emphasizing the need for stricter speed and seatbelt regulations.
+
+🌇 Urban areas account for nearly 62% of total casualties, highlighting city congestion and high traffic density.
+
+🌞 Daytime accidents are almost triple those at night, indicating exposure duration as a key factor.
+
+🛣️ Single carriageways remain the most accident-prone road type, warranting infrastructure redesign and lane management strategies.
+
+🧮 Key DAX Calculations (Sample)
+-- Current Year Casualties
 Current Year Casualties =
 TOTALYTD(SUM(Data[Number_of_Casualties]), 'Calendar'[Date])
 
+-- Previous Year Casualties
 Previous Year Casualties =
 CALCULATE(SUM(Data[Number_of_Casualties]), SAMEPERIODLASTYEAR('Calendar'[Date]))
 
 
-Additional DAX formulas were created for:
+Additional calculations were built for:
 
 YOY Growth %
 
-Fatal/Serious/Slight Casualties
+Severity-level breakdowns (Fatal, Serious, Slight)
 
-Road Type & Vehicle Type Summaries
+Vehicle and Road Type aggregations
 
-🎨 Data Visualization
-Tools Used:
+Date hierarchy using Calendar Table
 
-Power BI Desktop
+🧰 Tools & Technologies
+Category	Tool
+Data Visualization	Power BI Desktop
+Data Cleaning	Power Query Editor
+Calculations	DAX (Data Analysis Expressions)
+Design	PowerPoint
+Data Source	Excel (.xlsx)
+🗂️ Project Files
+File Name	Description
+Road Accident Dashboard.pbix	Power BI report file
+Road Accident Data.xlsx	Original dataset used for analysis
+Dashboard Background.pptx	Custom dashboard background design
+Screenshot_2025-10-24.jpg	Preview image of the final dashboard
 
-PowerPoint (for background design)
+(Upload all files in the GitHub repository and link them here.)
 
-Dashboard Sections:
+🧭 Conclusion
 
-KPI Cards: Total Casualties, Total Accidents, Fatal/Serious/Slight breakdown
+The Road Accident Analysis Dashboard successfully provides a holistic view of traffic accident trends, patterns, and contributing factors.
+By integrating data visualization, geospatial analysis, and year-over-year metrics, it empowers decision-makers to enhance safety strategies, optimize traffic policies, and focus resources on high-risk zones.
 
-Line Chart: CY vs PY Casualties monthly trend
-
-Bar Charts: Road Type & Vehicle Type breakdowns
-
-Donut Charts: Urban/Rural and Light Conditions
-
-Map Visualization: Casualties by Location (UK region-based)
-
-📉 Insights Highlight
-
-195.7K Total Casualties recorded, down 11.9% YoY
-
-2.9K Fatal Casualties (–33.3% YoY)
-
-Car accidents caused majority (155K+) casualties
-
-Urban areas contributed 61.95% of total casualties
-
-Daytime accidents were 73.8%, significantly higher than at night
-
-Single Carriageways were the most accident-prone road type
-
-⚙️ Tools & Technologies
-
-🧠 Power BI – Data Visualization & Analysis
-
-🧮 DAX (Data Analysis Expressions) – Calculations
-
-🧼 Power Query – Data Cleaning & Transformation
-
-🖼️ PowerPoint – Dashboard Background Design
-
-🏁 Conclusion
-
-This dashboard empowers stakeholders to:
-
-Monitor yearly trends and accident severity
-
-Identify high-risk road types and conditions
-
-Improve road safety through data-driven insights
-
-📧 Contact
+📧 Author Information
 
 Author: Shyamprasad Puli
+![Dashboard Preview](
