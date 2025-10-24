@@ -186,4 +186,4 @@ By integrating data visualization, geospatial analysis, and year-over-year metri
 📧 Author Information
 
 Author: Shyamprasad Puli
-![Dashboard Preview](
+![Dashboard Preview](https://github.com/shyampuli/Road-Accident-Analysis-Dashboard/blob/main/RAA%20Dashboard.jpg)
