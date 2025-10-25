@@ -169,14 +169,7 @@ Data Cleaning	Power Query Editor
 Calculations	DAX (Data Analysis Expressions)
 Design	PowerPoint
 Data Source	Excel (.xlsx)
-🗂️ Project Files
-File Name	Description
-Road Accident Dashboard.pbix	Power BI report file
-Road Accident Data.xlsx	Original dataset used for analysis
-Dashboard Background.pptx	Custom dashboard background design
-Screenshot_2025-10-24.jpg	Preview image of the final dashboard
 
-(Upload all files in the GitHub repository and link them here.)
 
 🧭 Conclusion
 
